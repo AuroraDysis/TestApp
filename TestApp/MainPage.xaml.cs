@@ -25,6 +25,20 @@ namespace TestApp
         public MainPage()
         {
             this.InitializeComponent();
+            CommandRefresh = new DelegateCommand(RefreshData);
+            List.ItemsSource = new string[] { "TEST1", "TEST2", "TEST3", "TEST4" };
+        }
+
+        public DelegateCommand CommandRefresh { get; private set; }
+
+        private void RefreshData()
+        {
+            List.ItemsSource = new string[] { "TEST6", "TEST4", "TEST3", "TEST4" };
+        }
+
+        private void List_ItemClick(Object sender, ItemClickEventArgs e)
+        {
+            Frame.Navigate(typeof(BlankPage1));
         }
     }
 }
